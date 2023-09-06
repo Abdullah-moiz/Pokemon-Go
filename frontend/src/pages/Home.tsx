@@ -3,33 +3,34 @@ import { Payment } from "../types"
 import { ColumnDef } from "@tanstack/react-table"
 
 export default function Home() {
-    const data: Payment[] = [
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-    ]
+
     return (
-        <div className='w-full flex flex-col items-center h-screen  text-white bg-slate-950 '>
+        <div className='w-full flex flex-col items-center h-screen  bg-gray-200 '>
             <DataTable columns={columns} data={data} />
         </div>
     )
 }
 
+const data: Payment[] = [
+    {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+    },
+    {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+    },
+    {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+    },
+]
 
 export const columns: ColumnDef<Payment>[] = [
     {

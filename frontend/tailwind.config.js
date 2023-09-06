@@ -8,6 +8,7 @@ module.exports = {
     './src/**/*.{ts,tsx}',
 	],
   theme: {
+    
     container: {
       center: true,
       padding: "2rem",
@@ -72,5 +73,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate") , require("daisyui")],
 }

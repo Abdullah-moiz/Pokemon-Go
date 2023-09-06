@@ -1,3 +1,3 @@
 import { DataTable } from "./DataTable";
-
-export { DataTable };
+import Loading from "./Loading";
+export { DataTable  , Loading };

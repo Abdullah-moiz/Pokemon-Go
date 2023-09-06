@@ -15,7 +15,8 @@ import {
     TableRow,
 } from "../../@/components/ui/table"
 
-import {Button} from "../../@/components/ui/button"
+import { Button } from "../../@/components/ui/button"
+import { Link } from "react-router-dom"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -33,15 +34,17 @@ export function DataTable<TData, TValue>({
     })
 
     return (
-        <div className="rounded-md  w-11/12 min-h-[30rem] py-4 px-6 text-center text-gray-50">
-            <Button>Add New Data</Button>
-            <Table className="border rounded my-1 h-full w-full">
-                <TableHeader>
+        <div className="rounded-md  w-11/12 min-h-[30rem] py-4 px-6 text-center">
+            <div className="w-full px-2 flex items-center justify-end">
+                <Link to={"/add-new-data"} className="btn btn-neutral my-2">Add New Data</Link>
+            </div>
+            <Table className="border border-black rounded my-1 h-full w-full">
+                <TableHeader className="border border-black">
                     {table.getHeaderGroups().map((headerGroup) => (
-                        <TableRow key={headerGroup.id}>
+                        <TableRow className="border border-black" key={headerGroup.id}>
                             {headerGroup.headers.map((header) => {
                                 return (
-                                    <TableHead key={header.id}>
+                                    <TableHead className="border border-black py-2 px-3" key={header.id}>
                                         {header.isPlaceholder
                                             ? null
                                             : flexRender(
@@ -54,15 +57,16 @@ export function DataTable<TData, TValue>({
                         </TableRow>
                     ))}
                 </TableHeader>
-                <TableBody>
+                <TableBody >
                     {table.getRowModel().rows?.length ? (
                         table.getRowModel().rows.map((row) => (
                             <TableRow
+                                className="border border-black "
                                 key={row.id}
                                 data-state={row.getIsSelected() && "selected"}
                             >
                                 {row.getVisibleCells().map((cell) => (
-                                    <TableCell key={cell.id}>
+                                    <TableCell  className="border border-black py-2 px-3" key={cell.id}>
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                     </TableCell>
                                 ))}
