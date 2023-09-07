@@ -1,9 +1,14 @@
 import express from "express";
-import { test } from "../controller/index.js";
+import { AddPokemonCard , GetPokemonCard } from "../controller/index.js";
 const router = express.Router();
 
 
-router.get('/' , test);
+router.post("/Add-pokemon-card" , AddPokemonCard);
+router.get("/get-pokemon-card" , GetPokemonCard)
+
+router.use("*" , (req, res) => {
+    res.status(404).json({ error: "Requested Resource Not Found" });
+});
 
 
 export default router;
