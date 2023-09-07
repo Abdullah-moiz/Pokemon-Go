@@ -2,27 +2,41 @@ import { useState } from "react";
 import { Pokemon } from "../types";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { motion } from "framer-motion";
+import { delete_pokemon_card } from "../services";
+import toast from "react-hot-toast";
 
 
 type PokemonCardProps = {
   key: string;
   card: Pokemon;
+  onDelete: (id: string) => void;
 };
 
-export default function PokemonCard({ card, key }: PokemonCardProps) {
+export default function PokemonCard({ card, key  , onDelete}: PokemonCardProps) {
   const [Hovered, setHovered] = useState(false);
 
 
 
   const handleMouseEnter = () => {
     setHovered(true);
-    
+
   };
 
   const handleMouseLeave = () => {
     setHovered(false);
-    
+
   };
+
+
+  const handleDelete = async (id: string) => {
+    const res =  await delete_pokemon_card(id);
+    if(res?.success){
+      toast.success("Pokemon card deleted successfully");
+      onDelete(id);
+    }else{
+      toast.error("Something went wrong");
+    }
+  }
 
 
   return (
@@ -44,26 +58,29 @@ export default function PokemonCard({ card, key }: PokemonCardProps) {
             <h3 className="font-semibold">Defense</h3>
             <p>{card?.defense}</p>
           </div>
-          <div>
-            <h3 className="font-semibold">Stamina 1</h3>
-            <p>{card?.stamina}</p>
-          </div>
-          <div>
-            <h3 className="font-semibold">Weather</h3>
-            <p>{card?.weather1}</p>
-          </div>
+          {
+            Hovered ?
+              <>
+                <button onClick={() => handleDelete(card?._id)} className="btn btn-circle text-xl btn-ghost"><AiFillDelete /></button>
+                <button className="btn btn-circle text-xl btn-ghost"><AiFillEdit /></button>
+              </>
+
+              :
+              <>
+                <div>
+                  <h3 className="font-semibold">Stamina 1</h3>
+                  <p>{card?.stamina}</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold">Weather</h3>
+                  <p>{card?.weather1}</p>
+                </div>
+              </>
+
+          }
         </div>
       </div>
-      {Hovered && (
-        <motion.div
-          className="absolute bottom-0 left-0 w-full h-44 bg-slate-950/50 transition-all duration-500 flex items-center justify-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
-          <AiFillDelete className="text-red-600 text-2xl m-2" />
-          <AiFillEdit className="text-green-600 text-2xl m-2" />
-        </motion.div>
-      )}
+
     </motion.div >
 
   )

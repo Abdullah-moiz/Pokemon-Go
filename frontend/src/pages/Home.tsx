@@ -17,16 +17,20 @@ export default function Home() {
         }
     });
 
-    console.log("🚀 ~ file: Home.tsx:11 ~ Home ~ data:", data);
 
+    const handleDelete = (id: string) => {
+        setPokemonData((prev) => prev.filter((card) => card._id !== id));
+    };
+
+    console.log("🚀 ~ file: Home.tsx:11 ~ Home ~ data:", data);
     return (
         <div className="w-full relative flex flex-col items-center h-screen bg-gray-200">
             <Navbar />
-            
+
             {isLoading && <Loading />}
             <div className="py-3 px-4 w-full h-[90%] overflow-auto flex items-center justify-center flex-wrap">
                 {PokemonData?.map((card: Pokemon) => {
-                    return <PokemonCard key={card?._id} card={card} />;
+                    return <PokemonCard key={card?._id} card={card} onDelete={handleDelete} />;
                 })}
             </div>
             {data?.length > 0 && (

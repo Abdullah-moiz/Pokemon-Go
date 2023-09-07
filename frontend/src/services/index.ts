@@ -30,3 +30,19 @@ export const get_all_pokemon_cards = async (page: number) => {
       console.log("Error in getting Pokemon data (service) =>", error);
     }
   };
+
+
+  export const delete_pokemon_card = async (id: string) => {
+    try {
+      const res = await fetch(
+        `http://localhost:8000/api/delete-pokemon-card/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      console.log("Error in deleting Pokemon data (service) =>", error);
+    }
+  }

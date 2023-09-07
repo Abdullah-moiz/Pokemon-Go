@@ -107,3 +107,15 @@ export const GetPokemonCard = async (req, res) => {
     }
   };
   
+
+
+export const DeletePokemonCard = async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Pokemon.findByIdAndDelete(id);
+        return res.status(200).json({ success: true, message: "Pokemon deleted successfully" });
+    } catch (error) {
+        console.log("🚀 ~ file: index.js:125 ~ AddPokemonCard ~ error:", error)
+        return res.status(500).json({ success: false, error: "something went wrong" });
+    }
+}
