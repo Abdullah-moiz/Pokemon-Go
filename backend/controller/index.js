@@ -227,3 +227,25 @@ export const UpdatePokemonCard = async (req, res) => {
     }
 
 }
+
+
+export const SearchPokemonCard = async (req, res) => {
+
+    try {
+
+        const { search } = req.query;
+        const name = `${search}`
+        
+        const data = await Pokemon.find({ name: { $regex: name, $options: "i" } });
+
+        return res.status(200).json({ success: true, data: data });
+
+    } catch (error) {
+
+        console.log("🚀 ~ file: index.js:125 ~ search pokemoncard ~ error:", error)
+
+        return res.status(500).json({ success: false, error: "something went wrong" });
+
+    }
+
+}

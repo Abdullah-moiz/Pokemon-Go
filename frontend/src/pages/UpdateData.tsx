@@ -123,7 +123,7 @@ export default function UpdateData() {
             </div>
             <div className="w-full h-full flex items-center justify-center">
                 <form onSubmit={handleSubmit(onSubmit)} className='w-full lg:w-1/2 h-full flex  flex-col  items-center  py-4'>
-                    <h1 className='text-xl font-semibold py-2 border-b tracking-widest border-indigo-600'>Add Pokemon Card</h1>
+                    <h1 className='text-xl font-semibold py-2 border-b tracking-widest border-indigo-600'>Update Pokemon Card</h1>
                     <div className="form-control w-full mb-2">
                         <label className="label">
                             <span className="label-text">Name</span>
@@ -307,7 +307,7 @@ export default function UpdateData() {
                         <label className="label">
                             <span className="label-text">Image </span>
                         </label >
-                        <input onChange={handleImageChange} name='image' id="image" required accept="image/*" type="file" className="file-input input-bordered w-full " />
+                        <input onChange={handleImageChange} name='image' id="image"  accept="image/*" type="file" className="file-input input-bordered w-full " />
                         {errors.imageURL && <span className='text-red-500 text-xs mt-2'>This field is required</span>}
                     </div >
 

@@ -89,3 +89,22 @@ export const get_all_pokemon_cards = async (page: number) => {
 
 
   }
+
+
+
+  export const search_pokemon_card = async (search: string) => {
+    console.log("search", search)
+    try {
+      const res = await fetch(
+        `http://localhost:8000/api/search-card?search=${encodeURIComponent(search)}`,
+        {
+          method: "GET",
+        }
+      );
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      console.log("Error in searching Pokemon specific card data (service) =>", error);
+    }
+
+  }
