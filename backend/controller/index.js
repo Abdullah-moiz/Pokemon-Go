@@ -119,3 +119,111 @@ export const DeletePokemonCard = async (req, res) => {
         return res.status(500).json({ success: false, error: "something went wrong" });
     }
 }
+
+
+
+export const GetSpecificCardData = async (req, res) => {
+
+    try {
+
+        const { id } = req.params;
+
+        const data = await Pokemon.findById(id);
+
+        return res.status(200).json({ success: true, data: data });
+
+    } catch (error) {
+
+        console.log("🚀 ~ file: index.js:125 ~ AddPokemonCard ~ error:", error)
+
+        return res.status(500).json({ success: false, error: "something went wrong" });
+
+    }
+
+
+}
+
+
+
+export const UpdatePokemonCard = async (req, res) => {
+
+    try {
+
+        const { id } = req.params;
+
+        const data = await req.body;
+
+        const {
+            name,
+            generation,
+            familyID,
+            imageURL,
+            type1,
+            type2,
+            pokeDexNumber,
+            eveolutionState,
+            weather1,
+            weather2,
+            statTotal,
+            attack,
+            defense,
+            stamina,
+            legandary,
+            aquireable,
+            spawns,
+            regional,
+        } = data;
+
+
+        const { error } = ProvidePokemonSchema.validate({
+            name,
+            generation,
+            familyID,
+            imageURL,
+            type1,
+            type2,
+            pokeDexNumber,
+            eveolutionState,
+            weather1,
+            weather2,
+            statTotal,
+            attack,
+            defense,
+            stamina,
+            legandary,
+            aquireable,
+            spawns,
+            regional,
+        });
+
+
+        if (error) return res.json({ success: false, message: error.details[0].message.replace(/['"]+/g, '') });
+
+        await Pokemon.findByIdAndUpdate(id, {
+            name,
+            generation,
+            familyID,
+            imageURL,
+            type1,
+            type2,
+            pokeDexNumber,
+            eveolutionState,
+            weather1,
+            weather2,
+            statTotal,
+            attack,
+            defense,
+            stamina,
+            legandary,
+            aquireable,
+            spawns,
+            regional,
+        });
+
+        return res.status(200).json({ success: true, message: "Pokemon updated successfully" });
+    }catch(error){
+        console.log("🚀 ~ file: index.js:125 ~ AddPokemonCard ~ error:", error)
+        return res.status(500).json({ success: false, error: "something went wrong" });
+    }
+
+}

@@ -4,6 +4,7 @@ import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { delete_pokemon_card } from "../services";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 type PokemonCardProps = {
@@ -13,6 +14,7 @@ type PokemonCardProps = {
 };
 
 export default function PokemonCard({ card, key  , onDelete}: PokemonCardProps) {
+  const navigate = useNavigate()
   const [Hovered, setHovered] = useState(false);
 
 
@@ -62,7 +64,7 @@ export default function PokemonCard({ card, key  , onDelete}: PokemonCardProps) 
             Hovered ?
               <>
                 <button onClick={() => handleDelete(card?._id)} className="btn btn-circle text-xl btn-ghost"><AiFillDelete /></button>
-                <button className="btn btn-circle text-xl btn-ghost"><AiFillEdit /></button>
+                <button onClick={() => navigate(`/update-data/${card?._id}`)} className="btn btn-circle text-xl btn-ghost"><AiFillEdit /></button>
               </>
 
               :
