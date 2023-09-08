@@ -1,5 +1,6 @@
 import express from "express";
-import { AddPokemonCard , GetPokemonCard , SearchPokemonCard,UpdatePokemonCard,GetSpecificCardData, DeletePokemonCard} from "../controller/index.js";
+import { AddPokemonCard , GetPokemonCard , 
+    SearchPokemonCard,UpdatePokemonCard,GetSpecificCardData, DeletePokemonCard} from "../controller/index.js";
 const router = express.Router();
 
 

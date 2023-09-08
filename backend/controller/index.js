@@ -3,6 +3,8 @@ import { ProvidePokemonSchema } from "../validation/index.js";
 
 
 
+// Add Pokemon Card
+
 export const AddPokemonCard = async (req, res) => {
     try {
 
@@ -91,6 +93,8 @@ export const AddPokemonCard = async (req, res) => {
 
 
 
+// Get Pokemon Card
+
 export const GetPokemonCard = async (req, res) => {
     try {
       const limit = parseInt(req.query.limit) || 10;
@@ -108,6 +112,7 @@ export const GetPokemonCard = async (req, res) => {
   };
   
 
+// Delete Pokemon Card
 
 export const DeletePokemonCard = async (req, res) => {
     try {
@@ -121,6 +126,7 @@ export const DeletePokemonCard = async (req, res) => {
 }
 
 
+// Get Specific Pokemon Card
 
 export const GetSpecificCardData = async (req, res) => {
 
@@ -144,6 +150,7 @@ export const GetSpecificCardData = async (req, res) => {
 }
 
 
+// Update Pokemon Card
 
 export const UpdatePokemonCard = async (req, res) => {
 
@@ -228,6 +235,8 @@ export const UpdatePokemonCard = async (req, res) => {
 
 }
 
+
+// Search Pokemon Card
 
 export const SearchPokemonCard = async (req, res) => {
 
