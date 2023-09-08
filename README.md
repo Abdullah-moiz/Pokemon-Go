@@ -72,7 +72,7 @@ I am using Firebase Storage to save Images of Pokemon Card you can create a proj
 
 ## Tech Stack
 
-**Client:** Vite +  React , React Query, TailwindCSS , Daisy UI , Firebase
+**Client:** Vite +  React , React Query, TailwindCSS , Daisy UI , Firebase , Typescript
 
-**Server:** Node, Express , mongoose , Joi
+**Server:** Node, Express , mongoose , Joi , MVC Architecture
 
