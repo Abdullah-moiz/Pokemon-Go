@@ -34,6 +34,7 @@ git clone https://github.com/Abdullah-moiz/Pokemon-Go.git
   npm run dev
 ```
 
+<img width="1870" height="924" alt="image" src="https://github.com/user-attachments/assets/8646bb02-fa2b-4dc1-bfcb-1a5e76fb5208" />
 
 ## Environment Variables
 
